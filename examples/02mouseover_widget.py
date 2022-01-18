@@ -10,12 +10,12 @@ class SimpleApp(App):
         await self.bind("q", "quit", "Quit")
 
     async def on_mount(self) -> None:
-
         # Header / footer / dock
         await self.view.dock(Header(), edge="top")
         await self.view.dock(Footer(), edge="bottom")
         await self.view.dock(Placeholder(), edge="left", size=30, name="sidebar")
 
         await self.view.dock(Placeholder())
+        
 
 SimpleApp.run(log="textual.log", title='custom widget')

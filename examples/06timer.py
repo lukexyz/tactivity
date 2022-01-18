@@ -1,11 +1,26 @@
 from datetime import datetime
-
+from rich.panel import Panel
 from rich.align import Align
 from textual.app import App
 from textual import events
+from textual.reactive import Reactive
 from textual.widget import Widget
 from textual.widgets import Header, Footer, Placeholder
 
+
+class Blobber(Widget):
+    mouse_over = Reactive(False)
+
+    def render(self) -> Panel:
+        self.render_title = "Select Function"
+        return Panel(self.render_title, style=("on red" if self.mouse_over else ""))
+        
+    def on_enter(self) -> None:
+        self.mouse_over = True
+        return Panel(self.render_title, style=("on red" if self.mouse_over else ""))
+
+    def on_leave(self) -> None:
+        self.mouse_over = False
 
 
 class Clock(Widget):
@@ -27,9 +42,7 @@ class ClockApp(App):
         # Header / footer / dock
         await self.view.dock(Header(), edge="top")
         await self.view.dock(Footer(), edge="bottom")
-        await self.view.dock(Placeholder(), edge="left", size=30, name="sidebar")
-
+        await self.view.dock(Blobber(), edge="left", size=30, name="sidebar")
         await self.view.dock(Clock())
 
-
-ClockApp.run()
+ClockApp.run(title='timer')

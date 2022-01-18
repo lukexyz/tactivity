@@ -1,3 +1,4 @@
 textual==0.1.14
 tqdm==4.62.3
 pyautogui==0.9.53
+textual-inputs==0.2.4
