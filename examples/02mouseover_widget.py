@@ -1,6 +1,6 @@
 from textual.app import App
 from textual import events
-from textual.widgets import Header, Footer, Placeholder, ScrollView
+from textual.widgets import Header, Footer, Placeholder
 
 class SimpleApp(App):
 
@@ -18,4 +18,4 @@ class SimpleApp(App):
 
         await self.view.dock(Placeholder())
 
-SimpleApp.run(log="textual.log")
+SimpleApp.run(log="textual.log", title='custom widget')
