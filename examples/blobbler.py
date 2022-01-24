@@ -27,6 +27,7 @@ class Blobber(Widget):
 
 
 class Clock(Widget):
+
     def on_mount(self):
         self.set_interval(1, self.refresh)
 
