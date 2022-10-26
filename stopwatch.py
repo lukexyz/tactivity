@@ -75,7 +75,7 @@ class StopwatchApp(App):
         """Create child widgets for the app."""
         yield Header()
         yield Footer()
-        yield Container(Stopwatch(), Stopwatch())
+        yield Container(Stopwatch(), Stopwatch(), id="timers")
 
     def action_add_stopwatch(self) -> None:
         """An action to add a timer."""
