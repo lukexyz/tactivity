@@ -10,20 +10,24 @@ from textual.widgets import Header, Footer, Placeholder
 
 class Blobber(Widget):
     mouse_over = Reactive(False)
+    render_title = "Select Function"
 
     def render(self) -> Panel:
-        self.render_title = "Select Function"
-        return Panel(self.render_title, style=("on red" if self.mouse_over else ""))
+        #self.render_title = "Select Function"
+        return Panel(self.render_title, style=("on cyan" if self.mouse_over else ""))
         
     def on_enter(self) -> None:
         self.mouse_over = True
-        return Panel(self.render_title, style=("on red" if self.mouse_over else ""))
+        self.render_title = "SELECTION YOUR OPTIONS"
+        return Panel(self.render_title, style=("on cyan" if self.mouse_over else ""))
 
     def on_leave(self) -> None:
         self.mouse_over = False
+        self.render_title = "Select Function"
 
 
 class Clock(Widget):
+
     def on_mount(self):
         self.set_interval(1, self.refresh)
 
